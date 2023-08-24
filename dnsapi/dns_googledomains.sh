@@ -86,6 +86,11 @@ _dns_googledomains_setup() {
     return 0
   fi
 
+  # First check for zone and token in the domain config
+  GOOGLEDOMAINS_ACCESS_TOKEN="${GOOGLEDOMAINS_ACCESS_TOKEN:-$(_readaccountconf_mutable GOOGLEDOMAINS_ACCESS_TOKEN)}"
+  GOOGLEDOMAINS_ZONE="${GOOGLEDOMAINS_ZONE:-$(_readaccountconf_mutable GOOGLEDOMAINS_ZONE)}"
+
+  # Failing that check the account config
   GOOGLEDOMAINS_ACCESS_TOKEN="${GOOGLEDOMAINS_ACCESS_TOKEN:-$(_readaccountconf_mutable GOOGLEDOMAINS_ACCESS_TOKEN)}"
   GOOGLEDOMAINS_ZONE="${GOOGLEDOMAINS_ZONE:-$(_readaccountconf_mutable GOOGLEDOMAINS_ZONE)}"
 
